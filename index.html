@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Тест</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="text-center">Привіт! Пропоную пройти невеликий тест</h2>
+            <form id="quizForm">
+                <div class="mb-3">
+                    <label class="form-label">1. Яка столиця Франції?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="Париж" id="q1a1">
+                        <label class="form-check-label" for="q1a1">Париж</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="Лондон" id="q1a2">
+                        <label class="form-check-label" for="q1a2">Лондон</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q1" value="Берлін" id="q1a3">
+                        <label class="form-check-label" for="q1a3">Берлін</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">2. Скільки буде 13 + 72</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="32" id="q2a1">
+                        <label class="form-check-label" for="q2a1">32</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="64" id="q2a2">
+                        <label class="form-check-label" for="q2a2">64</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="85" id="q2a3">
+                        <label class="form-check-label" for="q2a3">85</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">2. Скільки континентів на Землі?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="5" id="q3a1">
+                        <label class="form-check-label" for="q3a1">5</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="6" id="q3a2">
+                        <label class="form-check-label" for="q3a2">6</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q3" value="7" id="q3a3">
+                        <label class="form-check-label" for="q3a3">7</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary w-100" onclick="checkAnswers()">Перевірити</button>
+            </form>
+            <p id="result" class="mt-3 text-center fw-bold"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            let answers = { q1: "Париж", q2: "85", q3: "7" };
+            
+            for (let key in answers) {
+                let selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === answers[key]) {
+                    score++;
+                }
+            }
+
+            if (score == 3) {
+                window.location.href = 'result.html';
+            }
+            
+            document.getElementById("result").innerText = "Ваш результат: " + score + " з 3";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
